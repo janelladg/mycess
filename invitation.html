@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine’s Date Invitation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="invitation">
+            <h1>🌹 Surprise! 🌹</h1>
+            <p>After this amazing adventure, it’s time for the big question...</p>
+            <h2>Will you be my Valentine? 💖</h2>
+            <div class="buttons">
+                <a href="#" class="btn yes">YES! 💖</a>
+                <a href="#" class="btn no">No... 😢</a>
+            </div>
+            <p class="hint">(Hint: There's no wrong answer... but I hope you say YES! 😘)</p>
+        </div>
+    </div>
+
+    <!-- Custom Modal -->
+    <div id="valentineModal" class="modal">
+        <div class="modal-content">
+            <h2>YAY! 💕</h2>
+            <p>I’m so happy! Can’t wait for our special day together! 😘</p>
+            <button class="close-modal">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.no').addEventListener('click', function(event) {
+            event.preventDefault();
+            let btn = event.target;
+            let randomX = Math.floor(Math.random() * window.innerWidth - 100);
+            let randomY = Math.floor(Math.random() * window.innerHeight - 50);
+            btn.style.position = 'absolute';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        });
+        
+        document.querySelector('.yes').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Show the custom modal
+            document.getElementById('valentineModal').style.display = 'block';
+        });
+
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            // Close the modal when the "OK" button is clicked
+            document.getElementById('valentineModal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

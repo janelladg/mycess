@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let’s Begin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>Hello MY LOVE! 🌹</h1>
+            <p>To proceed, please enter the password:</p>
+            <form id="passwordForm" onsubmit="return checkPassword()">
+                <input type="password" id="passwordInput" placeholder="Enter password" required>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+            <p class="hint">(Hint: The password is a special word you’ll love! 💖)</p>
+        </div>
+    </div>
+
+    <!-- Custom Modal for Password Alert -->
+    <div id="customAlert" class="modal">
+        <div class="modal-content">
+            <span id="closeBtn" class="close">&times;</span>
+            <p id="alertMessage"></p>
+            <a href="#" id="alertButton" class="btn">OK</a>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const correctPassword = "elipot"; // The password you want to use
+            const enteredPassword = document.getElementById("passwordInput").value;
+
+            if (enteredPassword === correctPassword) {
+                // Show custom success message in modal
+                showAlert("Correct password! Welcome to the adventure!", true);
+                // Redirect after a brief delay (time to see the modal)
+                setTimeout(function() {
+                    window.location.href = "adventure.html"; // Redirect to the next page (you can change this URL)
+                }, 2000);
+            } else {
+                // Show custom error message in modal
+                showAlert("Incorrect password. Please try again.", false);
+            }
+
+            return false; // Prevent form submission
+        }
+
+        // Function to show the custom modal with a message
+        function showAlert(message, isSuccess) {
+            const modal = document.getElementById("customAlert");
+            const alertMessage = document.getElementById("alertMessage");
+            const alertButton = document.getElementById("alertButton");
+
+            alertMessage.textContent = message;
+            modal.style.display = "block";
+
+            if (isSuccess) {
+                alertButton.style.backgroundColor = "#28a745"; // Green for success
+            } else {
+                alertButton.style.backgroundColor = "#dc3545"; // Red for error
+            }
+
+            // Close modal when clicking on the "OK" button
+            alertButton.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // Close modal when clicking on the close button (X)
+            document.getElementById("closeBtn").onclick = function() {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

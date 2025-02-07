@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting Down to Surprise</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="countdown">
+            <h1>We’re almost there... 🕰️</h1>
+            <p>Hold on tight, your Valentine’s surprise is just moments away! 💝</p>
+            <div id="timer"></div>
+        </div>
+    </div>
+
+    <script>
+        let countdownDate = new Date().getTime() + 5000; // 5 seconds countdown
+
+        let timer = setInterval(function() {
+            let now = new Date().getTime();
+            let distance = countdownDate - now;
+
+            let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = "Time left: " + seconds + "s";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                window.location.href = 'invitation.html'; // Redirect to invitation page after countdown
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
